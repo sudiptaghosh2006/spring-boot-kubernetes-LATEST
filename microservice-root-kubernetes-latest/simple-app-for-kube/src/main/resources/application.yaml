@@ -1,0 +1,22 @@
+
+
+logging:
+  level:
+    org.springframework.*: error
+    com.sudipta.*: DEBUG
+
+spring:
+   application:
+      name: SIMPLE-APP-FOR-KUBE
+
+
+        
+
+
+
+
+
+
+
+
+

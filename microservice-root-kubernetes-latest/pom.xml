@@ -38,5 +38,6 @@
 		<module>microservice-common-lib</module>
 		<module>microservice-two</module>
 		<module>microservice-three</module>
+		<module>simple-app-for-kube</module>
 	</modules>
 </project>

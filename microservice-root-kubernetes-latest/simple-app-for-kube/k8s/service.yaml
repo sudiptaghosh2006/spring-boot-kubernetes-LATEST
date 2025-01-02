@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: SIMPLE-APP-FOR-KUBE-SERVICE
+  labels:
+    app: SIMPLE-APP-FOR-KUBE
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: SIMPLE-APP-FOR-KUBE
+  type: NodePort
