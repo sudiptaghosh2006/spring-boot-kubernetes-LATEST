@@ -1,13 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: SIMPLE-APP-FOR-KUBE-SERVICE
+  name: simple-app-for-kube-service
   labels:
     app: simple-app-for-kube
 spec:
   ports:
-    - port: 8080
-      protocol: TCP
+    - port: 80
+      targetPort: 8080
+      nodePort: 30007
   selector:
     app: simple-app-for-kube
   type: NodePort
