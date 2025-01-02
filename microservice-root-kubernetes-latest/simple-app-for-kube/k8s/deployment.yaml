@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: SIMPLE-APP-FOR-KUBE
+  name: simple-app-for-kube
   labels:
-    app: SIMPLE-APP-FOR-KUBE
+    app: simple-app-for-kube
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: SIMPLE-APP-FOR-KUBE
+      app: simple-app-for-kube
   template:
     metadata:
       labels:
-        app: SIMPLE-APP-FOR-KUBE
+        app: simple-app-for-kube
     spec:
 #      serviceAccountName: spring-cloud-kubernetes
       containers:
-      - name: SIMPLE-APP-FOR-KUBE
+      - name: simple-app-for-kube
         image: sudiptaghosh2006/simple-app-for-kube
         ports:
         - containerPort: 8080
