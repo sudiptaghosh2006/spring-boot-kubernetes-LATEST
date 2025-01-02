@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.sudipta</groupId>
+  <artifactId>microservice-root-kubernetes-latest</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  
+   <properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+  </properties>
+  
+  
+  
+  <dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.sudipta</groupId>
+				<artifactId>kubernetes-microservice-bom</artifactId>
+				<version>0.0.4</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<repositories>
+		<repository>
+			<id>private-nexus-repo</id>
+			<name>maven-releases</name>
+			<url>http://localhost:8081/repository/maven-releases/</url>
+		</repository>
+	</repositories>
+	<modules>
+		<module>microservice-gateway-service</module>
+		<module>microservice-one</module>
+		<module>microservice-common-lib</module>
+		<module>microservice-two</module>
+		<module>microservice-three</module>
+	</modules>
+</project>

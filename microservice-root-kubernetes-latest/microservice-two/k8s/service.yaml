@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: GATEWAY-SERVICE
+  labels:
+    app: GATEWAY-SERVICE
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: GATEWAY-SERVICE
+  type: NodePort

@@ -1,0 +1,22 @@
+logging:
+  level:
+    org.springframework.*: DEBUG
+    com.sudipta.*: DEBUG
+
+server:
+  port: 1001
+
+spring:
+   application:
+      name: SERVICE-ONE
+      
+
+
+
+
+
+
+
+
+
+

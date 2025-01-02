@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: SERVICE-ONE
+  labels:
+    app: SERVICE-ONE
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: SERVICE-ONE
+  template:
+    metadata:
+      labels:
+        app: SERVICE-ONE
+    spec:
+#      serviceAccountName: spring-cloud-kubernetes
+      containers:
+      - name: SERVICE-ONE
+        image: microservice-one
+        ports:
+        - containerPort: 8080

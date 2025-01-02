@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: SERVICE-TWO
+  labels:
+    app: SERVICE-TWO
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: SERVICE-TWO
+  template:
+    metadata:
+      labels:
+        app: SERVICE-TWO
+    spec:
+#      serviceAccountName: spring-cloud-kubernetes
+      containers:
+      - name: SERVICE-TWO
+        image: microservice-two
+        ports:
+        - containerPort: 8080

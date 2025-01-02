@@ -1,0 +1,23 @@
+server:
+  port: 1003
+
+logging:
+  level:
+    org.springframework.*: error
+    com.sudipta.*: DEBUG
+
+spring:
+   application:
+      name: SERVICE-THREE
+
+
+        
+
+
+
+
+
+
+
+
+

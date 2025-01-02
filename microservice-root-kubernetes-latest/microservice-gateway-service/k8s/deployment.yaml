@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: GATEWAY-SERVICE
+  labels:
+    app: GATEWAY-SERVICE
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: GATEWAY-SERVICE
+  template:
+    metadata:
+      labels:
+        app: GATEWAY-SERVICE
+    spec:
+#      serviceAccountName: spring-cloud-kubernetes
+      containers:
+      - name: GATEWAY-SERVICE
+        image: microservice-gateway-service
+        ports:
+        - containerPort: 8080

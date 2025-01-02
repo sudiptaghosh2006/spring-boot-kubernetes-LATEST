@@ -1,0 +1,19 @@
+logging:
+  level:
+    org.springframework.*: debug
+    reactor.netty.http.client: error
+    root: ERROR
+ 
+
+server:
+   port: 1010 
+   
+
+spring:
+   application:
+      name: GATEWAY-SERVICE
+
+
+
+   
+          

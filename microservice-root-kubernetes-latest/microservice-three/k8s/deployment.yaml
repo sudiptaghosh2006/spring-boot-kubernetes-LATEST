@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: SERVICE-THREE
+  labels:
+    app: SERVICE-THREE
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: SERVICE-THREE
+  template:
+    metadata:
+      labels:
+        app: SERVICE-THREE
+    spec:
+#      serviceAccountName: spring-cloud-kubernetes
+      containers:
+      - name: SERVICE-THREE
+        image: microservice-three
+        ports:
+        - containerPort: 8080
