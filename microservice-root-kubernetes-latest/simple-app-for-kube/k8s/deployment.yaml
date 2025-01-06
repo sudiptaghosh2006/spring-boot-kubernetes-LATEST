@@ -19,4 +19,4 @@ spec:
       - name: simple-app-for-kube
         image: sudiptaghosh2006/simple-app-for-kube
         ports:
-        - containerPort: 8080
+        - containerPort: 8080     # Port the application listens to

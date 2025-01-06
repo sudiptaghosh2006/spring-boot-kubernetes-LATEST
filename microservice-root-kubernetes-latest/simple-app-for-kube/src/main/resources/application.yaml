@@ -1,9 +1,11 @@
 
-
+server:
+  port: 8080 
 logging:
   level:
-    org.springframework.*: error
+#    org.springframework.*: DEBUG
     com.sudipta.*: DEBUG
+#		root: error
 
 spring:
    application:

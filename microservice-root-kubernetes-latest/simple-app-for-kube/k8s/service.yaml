@@ -2,13 +2,16 @@ apiVersion: v1
 kind: Service
 metadata:
   name: simple-app-for-kube-service
+  namespace: default
   labels:
     app: simple-app-for-kube
 spec:
-  ports:
-    - port: 80
-      targetPort: 8080
-      nodePort: 30007
   selector:
     app: simple-app-for-kube
-  type: NodePort
+  type: NodePort            # Options: ClusterIP, NodePort, or LoadBalancer
+  ports:
+    - port: 80			        # Port exposed by the Service to the client
+      targetPort: 8080		  # Port the application listens to inside the container
+      nodePort: 30007		    # The external port exposed on the node (only applicable for NodePort or LoadBalancer services)
+ 
+  
