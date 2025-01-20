@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,11 +33,11 @@ public class SecondController {
 	private WebClient.Builder builder;
 
 	@Autowired
-	private ServerProperties serverProperties;
+	private ServletWebServerApplicationContext webServerApplicationContext;
 
 	private Logger LOGGER = LoggerFactory.getLogger(SecondController.class);
-//	private String url = "http://SERVICE-3/ThirdController/micro3";
-	private String url = "http://localhost:1003/ThirdController/micro3";
+	private String url = "http://SERVICE-3/ThirdController/micro3";
+//	private String url = "http://localhost:1003/ThirdController/micro3";
 
 	@GetMapping("/micro2")
 	public ResponseEntity<ApplicationResponseData<List<String>>> getMessage() {
@@ -45,7 +46,7 @@ public class SecondController {
 
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("In Micro Service 2 @ :: ").append(LocalDateTime.now()).append("   Port ==>   ")
-				.append(serverProperties.getPort());
+				.append(webServerApplicationContext.getWebServer().getPort());
 
 		String stringMessage = stringBuilder.toString();
 		LOGGER.debug(stringMessage);

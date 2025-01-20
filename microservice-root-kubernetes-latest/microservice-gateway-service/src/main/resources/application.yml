@@ -1,8 +1,8 @@
 logging:
   level:
-    org.springframework.*: debug
-    reactor.netty.http.client: error
-    root: ERROR
+    org.springframework.*: DEBUG
+    reactor.netty.http.client: DEBUG
+    root: DEBUG
  
 
 server:

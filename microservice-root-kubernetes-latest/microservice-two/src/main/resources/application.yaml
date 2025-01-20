@@ -1,10 +1,11 @@
 logging:
   level:
-     org.springframework.*: error
+     org.springframework.*: DEBUG
      com.sudipta.*: DEBUG
 
 server:
   port: 1002
+
      
 spring:
    application:

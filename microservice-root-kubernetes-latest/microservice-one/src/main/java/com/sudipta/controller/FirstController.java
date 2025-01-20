@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
 //import org.springframework.cloud.client.loadbalancer.ResponseData;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
@@ -43,16 +44,14 @@ public class FirstController
 
     @Autowired
     private WebClient.Builder builder;
-    
-//    @Autowired
-//    private WebClient  webClient;
+
 
     private Logger LOGGER = LoggerFactory.getLogger(FirstController.class);
-//    private String url = "http://SERVICE-2/SecondController/micro2";
-    private String url = "http://localhost:1002/SecondController/micro2";
+    private String url = "http://SERVICE-2/SecondController/micro2";
+//    private String url = "http://localhost:1002/SecondController/micro2";
 
     @Autowired
-    private ServerProperties serverProperties;
+	private ServletWebServerApplicationContext webServerApplicationContext;
 
     @GetMapping("/microAdmin1")
 
@@ -64,7 +63,7 @@ public class FirstController
 	 =new ParameterizedTypeReference<ApplicationResponseData<List<String>>>() {};
 	StringBuilder stringBuilder = new StringBuilder();
 	stringBuilder.append("In Micro Service 1 @ :: ").append(LocalDateTime.now()).append("   Port ==>   ")
-		.append(serverProperties.getPort());
+		.append(webServerApplicationContext.getWebServer().getPort());
 
 	String stringMessage = stringBuilder.toString();
 	LOGGER.debug(stringMessage);
@@ -89,9 +88,9 @@ public class FirstController
 //	    @ApiResponse(responseCode = "400", description = "Invalid id supplied", 
 //	      content = @Content), 
 //	    @ApiResponse(responseCode = "404", description = "No  Message found", content = @Content) })
-   
+
 //    @CircuitBreaker(name = "SERVICE-1", fallbackMethod = "getMessageFallback")
-    
+
 //    @PreAuthorize("hasAnyRole('APP-USER')")
     public ResponseEntity<ApplicationResponseData<List<String>>> getUserMessage()
     {
@@ -100,7 +99,7 @@ public class FirstController
 	 =new ParameterizedTypeReference<ApplicationResponseData<List<String>>>() {};
 	StringBuilder stringBuilder = new StringBuilder();
 	stringBuilder.append("In Micro Service 1 @ :: ").append(LocalDateTime.now()).append("   Port ==>   ")
-		.append(serverProperties.getPort());
+		.append(webServerApplicationContext.getWebServer().getPort());
 
 	String stringMessage = stringBuilder.toString();
 	LOGGER.debug(stringMessage);
@@ -112,7 +111,7 @@ public class FirstController
 //		.bodyToFlux(typeRef);
 	
 	ApplicationResponseData<List<String>> responseData = bodyToFlux.blockFirst();
-	responseData.getResponseData().add("Information added in First Controller  @  "+LocalDateTime.now() +"==>  PORT NO :::   " +serverProperties.getPort());
+	responseData.getResponseData().add("Information added in First Controller  @  "+LocalDateTime.now() +"==>  PORT NO :::   " +webServerApplicationContext.getWebServer().getPort());
 	return new ResponseEntity<ApplicationResponseData<List<String>>>(responseData, HttpStatus.OK);
 	  
 	

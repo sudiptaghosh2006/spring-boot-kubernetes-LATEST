@@ -33,11 +33,11 @@
 		</repository>
 	</repositories>
 	<modules>
-		<module>microservice-gateway-service</module>
+	<!--	<module>microservice-gateway-service</module>-->
 		<module>microservice-one</module>
 		<module>microservice-common-lib</module>
 		<module>microservice-two</module>
 		<module>microservice-three</module>
-		<module>simple-app-for-kube</module>
+		<!--<module>simple-app-for-kube</module>-->
 	</modules>
 </project>

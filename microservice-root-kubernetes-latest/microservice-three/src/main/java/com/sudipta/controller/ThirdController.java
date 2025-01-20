@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,41 +22,38 @@ import com.sudipta.common.dto.ServiceResponseStatusConstant;
 
 @RestController()
 @RequestMapping("/ThirdController")
-public class ThirdController
-{
-    private Logger LOGGER = LoggerFactory.getLogger(ThirdController.class);
+public class ThirdController {
+	private Logger LOGGER = LoggerFactory.getLogger(ThirdController.class);
 
-    @Autowired
-    private ServerProperties serverProperties;
-    
+	@Autowired
+	private ServletWebServerApplicationContext webServerApplicationContext;
+
 //    private ISalesService salesService;
 
-    @GetMapping("/micro3")
-    public ResponseEntity<ApplicationResponseData<List<String>>> getMessage()
-    {
-	List<String> dataList=new ArrayList<String>();
+	@GetMapping("/micro3")
+	public ResponseEntity<ApplicationResponseData<List<String>>> getMessage() {
+		List<String> dataList = new ArrayList<String>();
 
-	StringBuilder stringBuilder = new StringBuilder();
-	stringBuilder.append("In Micro Service 3@ :: ").append(LocalDateTime.now()).append("   Port ==>   ")
-		.append(serverProperties.getPort());
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("In Micro Service 3@ :: ").append(LocalDateTime.now()).append("   Port ==>   ")
+				.append(webServerApplicationContext.getWebServer().getPort());
 
-	String stringMessage = stringBuilder.toString();
-	LOGGER.debug(stringMessage);
-	dataList.add(stringMessage);
-	
-	ServiceResponseStatus responseStatus=new ServiceResponseStatus();
-	responseStatus.setResponseCode(ServiceResponseStatusConstant.SUCCESS_CODE);
-	responseStatus.setResponseMessage(ServiceResponseStatusConstant.SUCCESS_MESSAGE);
-	
-	
-	ApplicationResponseData<List<String>> responseData=new ApplicationResponseData<List<String>>();
-	responseData.setResponseStatus(responseStatus);
-	
-	responseData.setResponseData(dataList);
-	
+		String stringMessage = stringBuilder.toString();
+		LOGGER.debug(stringMessage);
+		dataList.add(stringMessage);
+
+		ServiceResponseStatus responseStatus = new ServiceResponseStatus();
+		responseStatus.setResponseCode(ServiceResponseStatusConstant.SUCCESS_CODE);
+		responseStatus.setResponseMessage(ServiceResponseStatusConstant.SUCCESS_MESSAGE);
+
+		ApplicationResponseData<List<String>> responseData = new ApplicationResponseData<List<String>>();
+		responseData.setResponseStatus(responseStatus);
+
+		responseData.setResponseData(dataList);
+
 //	salesService.getSales();
 
-	return new ResponseEntity<ApplicationResponseData<List<String>>>(responseData, HttpStatus.OK);
-    }
+		return new ResponseEntity<ApplicationResponseData<List<String>>>(responseData, HttpStatus.OK);
+	}
 
 }
